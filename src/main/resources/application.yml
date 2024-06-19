@@ -12,3 +12,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
     open-in-view: false  # avoid warn info
+  devtools:
+    restart:
+      exclude: static/**, application.yml  # 热部署排除的文件
+      # enabled: true  # 设置为false关闭

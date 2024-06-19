@@ -17,4 +17,14 @@ public class SwaggerController {
     public String hello1(@RequestBody User user){
         return user.toString();
     }
+
+    @RequestMapping("bgm")
+    public String hello2(@RequestBody Bgm bgm){
+        return bgm.toString();
+    }
+
+    @RequestMapping("video")
+    public String hello3(@RequestBody Video video){
+        return video.toString();
+    }
 }
