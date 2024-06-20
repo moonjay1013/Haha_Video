@@ -27,4 +27,14 @@ public class SwaggerController {
     public String hello3(@RequestBody Video video){
         return video.toString();
     }
+
+    @RequestMapping("comment")
+    public String hello4(@RequestBody Comment comment){
+        return comment.toString();
+    }
+
+    @RequestMapping("report")
+    public String hello5(@RequestBody Report report){
+        return report.toString();
+    }
 }
