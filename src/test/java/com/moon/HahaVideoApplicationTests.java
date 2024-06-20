@@ -1,9 +1,7 @@
 package com.moon;
 
 import com.moon.pojo.*;
-import com.moon.service.BgmService;
-import com.moon.service.UserService;
-import com.moon.service.VideoService;
+import com.moon.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +18,14 @@ class HahaVideoApplicationTests {
     private VideoService videoService;
     @Autowired
     private BgmService bgmService;
+    @Autowired
+    private CommentService commentService;
+    @Autowired
+    private ReportService reportService;
+
+    Date dt = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String currentTime = sdf.format(dt);
 
     @Test
     void contextLoads() {
@@ -70,9 +76,6 @@ class HahaVideoApplicationTests {
         video.setStatus(0);
         video.setUserId(1);
         // 视频的默认创建时间为当前的日期
-        Date dt = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentTime = sdf.format(dt);
         video.setCrateTime(currentTime);
         // 文件的path
         video.setVideoPath("/videos/funny01.mp4");
@@ -98,6 +101,42 @@ class HahaVideoApplicationTests {
             e.printStackTrace();
         }finally {
             System.out.println("bgm insert func completed!");
+        }
+    }
+
+    @Test
+    void testCommentInsert(){
+        Comment c = new Comment();
+        c.setComment("hahahaha so funny");
+        c.setVideoId(1);
+        c.setCreateTime(currentTime);
+        c.setFromUserId(1);
+
+        try {
+            commentService.addComment(c);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("comment insert func completed!");
+        }
+    }
+
+    @Test
+    void testReportInsert(){
+        Report r = new Report();
+        r.setContent("视频质量不高！");
+        r.setCreateTime(currentTime);
+        r.setTitle("匿名举报");
+        r.setUserId(2);  // 被举报视频的上传者
+        r.setVideoId(2);
+        r.setUId(1);  // 报告人
+
+        try {
+            reportService.addReport(r);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            System.out.println("Report insert func completed!");
         }
     }
 
