@@ -16,6 +16,20 @@ spring:
     restart:
       exclude: static/**, application.yml  # 热部署排除的文件
       # enabled: true  # 设置为false关闭
+  thymeleaf:
+    prefix: classpath:/templates/  # 配置web页面根目录
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+  web:
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            path: /**  # 指定/**表示该文件夹下的所有静态资源都做缓存处理
+        cache: true  # 加上缓存配置后我们访问页面后，被加载过的静态资源就会缓存起来，第二次访问时就不会再去重新请求下载了
 ---
 logging:
   pattern:
