@@ -30,6 +30,8 @@ spring:
             enabled: true
             path: /**  # 指定/**表示该文件夹下的所有静态资源都做缓存处理
         cache: true  # 加上缓存配置后我们访问页面后，被加载过的静态资源就会缓存起来，第二次访问时就不会再去重新请求下载了
+  messages:  # 国际化配置
+    basename: i18n.login
 ---
 logging:
   pattern:
