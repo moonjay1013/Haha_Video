@@ -3,6 +3,8 @@ package com.moon;
 import com.moon.pojo.*;
 import com.moon.service.*;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -22,6 +24,9 @@ class HahaVideoApplicationTests {
     private CommentService commentService;
     @Autowired
     private ReportService reportService;
+
+    // 指定要打印日志的目标类
+    private static final Logger log = LoggerFactory.getLogger(HahaVideoApplicationTests.class);
 
     Date dt = new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -138,6 +143,14 @@ class HahaVideoApplicationTests {
         }finally {
             System.out.println("Report insert func completed!");
         }
+    }
+
+    @Test
+    public void TestLogFactory() {
+        log.warn("Hello ExecutorService");
+        log.error("Hello ExecutorService");
+        log.info("Hello ExecutorService");
+        log.debug("Hello ExecutorService");
     }
 
 }

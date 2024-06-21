@@ -16,3 +16,12 @@ spring:
     restart:
       exclude: static/**, application.yml  # 热部署排除的文件
       # enabled: true  # 设置为false关闭
+---
+logging:
+  pattern:
+    #格式化，只能输出日期和内容
+    console: "%d - %msg%n"
+  # 配置日志输出位置
+  file:
+    path: D:/Java/java_files
+#  level: warn  # // 采用这种全局设置级别的方式  只打印 Warn及以上
