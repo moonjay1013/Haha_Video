@@ -117,3 +117,11 @@ span a{
     text-decoration: none;
     color: #5b8f5b;
 }
+.i18n{
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    top: 58%;
+}
