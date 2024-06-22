@@ -1,5 +1,6 @@
 package com.moon;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.moon.pojo.*;
 import com.moon.service.*;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -32,9 +36,22 @@ class HahaVideoApplicationTests {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String currentTime = sdf.format(dt);
 
+    //DI注入数据源
+    @Autowired
+    DataSource dataSource;
+
     @Test
-    void contextLoads() {
-        System.out.println("This is Unit Test class");
+    public void contextLoads() throws SQLException {
+        //看一下默认数据源
+        System.out.println(dataSource.getClass());
+        //获得连接
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection);
+        DruidDataSource druidDataSource = (DruidDataSource) dataSource;
+        System.out.println("druidDataSource 数据源最大连接数：" + druidDataSource.getMaxActive());
+        System.out.println("druidDataSource 数据源初始化连接数：" + druidDataSource.getInitialSize());
+        //关闭连接
+        connection.close();
     }
 
     @Test
