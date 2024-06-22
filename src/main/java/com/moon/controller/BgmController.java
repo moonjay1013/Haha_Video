@@ -33,14 +33,14 @@ public class BgmController {
     }
 
     /**更新bgm*/
-    @RequestMapping({"/updateBgm"})
+    @RequestMapping({"/uBgm"})
     public String updateBgm(@ModelAttribute Bgm bgm) {
         bgmService.updateBgm(("/bgm/" + bgm.getPath()),bgm.getMusicName(),bgm.getAuthor(), bgm.getId());
         return "redirect:/table/basic";
     }
 
     /**删除bgm 重定向到基本表页面*/
-    @RequestMapping({"/deleleBgm"})
+    @RequestMapping({"/deleteBgm"})
     public String del(Bgm bgm) {
         bgmService.delBgm(bgm.getId());
         return "redirect:/table/basic";

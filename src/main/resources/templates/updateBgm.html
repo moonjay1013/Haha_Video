@@ -102,10 +102,6 @@
             </div>
             <!--notification menu end -->
         </div>
-        <!-- header section end-->
-        <!-- page heading start-->
-        <!-- page heading end-->
-        <!--body wrapper start-->
         <!--编辑bgm-->
         <form th:object="${bgm}">
             <input th:value="${bgm.id}" id="ii" type="hidden">
@@ -152,7 +148,7 @@
             var m = $("#musicname").val();//author
             var a = $("#author").val();
             var bp = $("#bgm").val().substring(12, 40); //path
-            var url = "/updateBgm?path=" + bp + "&musicName=" + m + "&author=" + a + "&id=" + i;
+            var url = "/uBgm?path=" + bp + "&musicName=" + m + "&author=" + a + "&id=" + i;
             $.post(url, function (data) {
             });
             window.location.reload();
