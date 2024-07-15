@@ -1,4 +1,8 @@
 # Getting Started
 
-### 从0开始写一个SpringBoot程序
+### SpringBoot程序
+
+技术栈：
+
+SpringBoot、Maven项目管理、Swagger DOC、MySQL、JPA、Thymeleaf模板引擎、Druid
 
